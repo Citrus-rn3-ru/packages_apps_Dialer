@@ -493,6 +493,8 @@ public class DialtactsActivity extends TransactionSafeActivity
           int screenWidth = mParentLayout.getWidth();
           mFloatingActionButtonController.setScreenWidth(screenWidth);
           mFloatingActionButtonController.align(getFabAlignment(), false /* animate */);
+
+          SmartDialPrefix.initializeNanpSettings(this);
         });
 
     Trace.endSection();
@@ -1320,7 +1322,7 @@ public class DialtactsActivity extends TransactionSafeActivity
       mSmartDialSearchFragment.setAddToContactNumber(query);
     }
     final String normalizedQuery =
-        SmartDialNameMatcher.normalizeNumber(query, SmartDialNameMatcher.LATIN_SMART_DIAL_MAP);
+        SmartDialNameMatcher.normalizeNumber(query, SmartDialPrefix.getMap());
 
     if (!TextUtils.equals(mSearchView.getText(), normalizedQuery)) {
       if (DEBUG) {
