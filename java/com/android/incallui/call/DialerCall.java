@@ -875,8 +875,8 @@ public class DialerCall implements VideoTechListener, StateChangedListener, Capa
    */
   private void updateEmergencyCallState() {
     Uri handle = mTelecomCall.getDetails().getHandle();
-    mIsEmergencyCall = QtiCallUtils.isEmergencyNumber
-        (handle == null ? "" : handle.getSchemeSpecificPart());
+    mIsEmergencyCall = QtiCallUtils.isEmergencyNumber(mTelecomCall,
+        handle == null ? "" : handle.getSchemeSpecificPart());
   }
 
   public LogState getLogState() {

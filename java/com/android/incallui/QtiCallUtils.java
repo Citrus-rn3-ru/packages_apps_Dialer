@@ -42,6 +42,7 @@ import android.os.RemoteException;
 
 import android.telecom.Connection.VideoProvider;
 import android.telecom.VideoProfile;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
@@ -58,6 +59,7 @@ import org.codeaurora.ims.utils.QtiImsExtUtils;
 import com.android.ims.ImsManager;
 import com.android.incallui.call.CallList;
 import com.android.incallui.call.DialerCall;
+import com.android.incallui.util.TelecomCallUtil;
 
 /**
  * This class contains Qti specific utiltity functions.
@@ -101,33 +103,35 @@ public class QtiCallUtils {
     /**
      * returns true if it is emrgency number else false
      */
-    public static boolean isEmergencyNumber(String number) {
-        boolean isEmergencyNumber = false;
+    public static boolean isEmergencyNumber(android.telecom.Call telecomCall, String number) {
+        IExtTelephony extTelephony = getIExtTelephony();
+        if (extTelephony == null) {
+            return TelecomCallUtil.isEmergencyCall(telecomCall);
+        }
 
         try {
-            isEmergencyNumber = getIExtTelephony().isEmergencyNumber(number);
+            return extTelephony.isEmergencyNumber(number);
         } catch (RemoteException ex) {
             Log.e(LOG_TAG, "Exception : " + ex);
-        } catch (NullPointerException ex) {
-            Log.e(LOG_TAG, "Exception : " + ex);
+            return TelecomCallUtil.isEmergencyCall(telecomCall); 
         }
-        return isEmergencyNumber;
     }
 
     /**
      * returns true if it is local emrgency number else false
      */
-    public static boolean isLocalEmergencyNumber(String number) {
-        boolean isEmergencyNumber = false;
+    public static boolean isLocalEmergencyNumber(Context context, String number) {
+        IExtTelephony extTelephony = getIExtTelephony();
+        if (extTelephony == null) {
+            return PhoneNumberUtils.isLocalEmergencyNumber(context, number);
+        }
 
         try {
-            isEmergencyNumber = getIExtTelephony().isLocalEmergencyNumber(number);
+            return extTelephony.isLocalEmergencyNumber(number);
         } catch (RemoteException ex) {
             Log.e(LOG_TAG, "Exception : " + ex);
-        } catch (NullPointerException ex) {
-            Log.e(LOG_TAG, "Exception : " + ex);
+            return PhoneNumberUtils.isLocalEmergencyNumber(context, number);
         }
-        return isEmergencyNumber;
     }
 
     /**
