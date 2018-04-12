@@ -78,6 +78,8 @@
     <string name="menu_show_missed_only" msgid="2266983597575047192">"Пропущенные"</string>
     <string name="menu_show_voicemails_only" msgid="1114917855179284592">"Показать голосовые сообщения"</string>
     <string name="menu_show_all_calls" msgid="220054502052344488">"Все вызовы"</string>
+    <string name="menu_add_to_4g_conference_call">Добавить 4G конференц-связь</string>
+    <string name="menu_4g_conference_call">Конференц-связь 4G</string>
     <string name="add_2sec_pause" msgid="3417815038173424525">"Добавить двухсекундную паузу"</string>
     <string name="add_wait" msgid="1177723010768282578">"Добавить паузу"</string>
     <string name="dialer_settings_label" msgid="4980176284150290175">"Настройки"</string>
@@ -244,4 +246,19 @@
     <string name="view_conversation" msgid="7895904782094119702">"Посмотреть"</string>
     <string name="ec_data_deleted" msgid="4794880345545827107">"Вызов удален. Посмотреть и удалить прикрепленные к нему файлы можно в приложении \"Сообщения\"."</string>
     <string name="multiple_ec_data_deleted" msgid="2971579891973176316">"Вызовы удалены. Посмотреть и удалить прикрепленные к ним файлы можно в приложении \"Сообщения\"."</string>
+    
+    <!--  for speed dial -->
+    <string name="speed_dial_settings">Насйтрайка быстрого набора</string>
+    <string name="speed_dial_not_set">(не задан)</string>
+    <string name="speed_dial_replace">Заменить</string>
+    <string name="speed_dial_delete">Удалить</string>
+    <string name="speed_dial_unassigned_dialog_title">Не назначено</string>
+    <string name="speed_dial_unassigned_dialog_message">На числовую клавишу \'<xliff:g id="number">%s</xliff:g>\' не назначено действие быстрого набора. Вы хотите назначить действие сейчас?</string>
+    <string name="dialog_speed_dial_airplane_mode_message">Чтобы использовать быстрый набор, сначала отключите режим полета.</string>
+    <!-- Speed Dial can not be set for the key used for Emergency number-->
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="input_number">Введите номер</string>
+    <string name="speed_dial_cancel">Отмена</string>
+    <string name="speed_dial_ok">Ок</string>
 </resources>
